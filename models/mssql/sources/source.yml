@@ -1,0 +1,110 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw data source"
+    database: DBT  
+    schema: raw
+    tables:
+      - name: channels
+        description: "Contains information about channels"
+        columns:
+          - name: channel_name
+            description: "Name of the channel"
+          - name: channel_id
+            description: "Unique identifier for the channel"
+
+      - name: main
+        description: "Main transactions table"
+        columns:
+          - name: transaction_id
+            description: "Unique identifier for the transaction"
+            tests:
+              - unique 
+              - not_null
+          - name: customer_id
+            description: "Unique identifier for the customer"
+          - name: product_id
+            description: "Unique identifier for the product"
+          - name: amount
+            description: "Total amount of the transaction"
+          - name: qty
+            description: "Quantity of products in the transaction"
+          - name: channel_id
+            description: "ID of the channel through which the transaction occurred"
+          - name: bought_date
+            description: "Date the transaction was made"
+
+      - name: products
+        description: "Information about products"
+        columns:
+          - name: name
+            description: "Name of the product"
+          - name: city
+            description: "City associated with the product"
+          - name: price
+            description: "Price of the product"
+          - name: product_id
+            description: "Unique identifier for the product"
+
+      - name: resellers
+        description: "Information about resellers"
+        columns:
+          - name: reseller_id
+            description: "Unique identifier for the reseller"
+          - name: reseller_name
+            description: "Name of the reseller"
+          - name: commission_pct
+            description: "Commission percentage for the reseller"
+
+      - name: resellers_type1
+        description: "Reseller transactions for Type 1"
+        columns:
+          - name: Product name
+            description: "Name of the product sold by the reseller"
+          - name: Quantity
+            description: "Quantity sold by the reseller"
+          - name: Total amount
+            description: "Total amount of sales by the reseller"
+          - name: Sales Channel
+            description: "Sales channel used"
+          - name: Customer First Name
+            description: "First name of the customer"
+          - name: Customer Last Name
+            description: "Last name of the customer"
+          - name: Customer Email
+            description: "Email of the customer"
+          - name: Series City
+            description: "City associated with the series"
+          - name: Created Date
+            description: "Date the transaction was created"
+          - name: Reseller ID
+            description: "Unique identifier for the reseller"
+          - name: Transaction ID
+            description: "Unique identifier for the transaction"
+
+      - name: resellers_type2
+        description: "Reseller transactions for Type 2"
+        columns:
+          - name: date
+            description: "Date of the transaction"
+          - name: reseller-id
+            description: "Unique identifier for the reseller"
+          - name: productName
+            description: "Name of the product sold"
+          - name: qty
+            description: "Quantity sold"
+          - name: totalAmount
+            description: "Total amount of sales"
+          - name: salesChannel
+            description: "Sales channel used"
+          - name: customer
+            description: "Customer associated with the transaction"
+          - name: dateCreated
+            description: "Date the record was created"
+          - name: seriesCity
+            description: "City associated with the series"
+          - name: Created Date
+            description: "Date the transaction was created"
+          - name: transactionID
+            description: "Unique identifier for the transaction"
